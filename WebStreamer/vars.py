@@ -6,20 +6,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class Var(object):
+
+
+class Var((object)):
     API_ID = int(getenv('API_ID'))
     API_HASH = str(getenv('API_HASH'))
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '3'))
-    BIN_CHANNEL = int(getenv('BIN_CHANNEL', None))     
+    BIN_CHANNEL = int(getenv('BIN_CHANNEL', None))
     PORT = int(getenv('PORT', 8080))
     BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
     HAS_SSL = getenv('HAS_SSL', False)
-    HAS_SSL = True if str(HAS_SSL).lower() == 'true' else False
+    HAS_SSL = str(HAS_SSL).lower() == 'true'
     # OWNER_ID = int(getenv('OWNER_ID')) #TODO
     NO_PORT = getenv('NO_PORT', False)
-    NO_PORT = True if str(NO_PORT).lower() == 'true' else False
+    NO_PORT = str(NO_PORT).lower() == 'true'
     if 'DYNO' in environ:
         ON_HEROKU = True
         APP_NAME = str(getenv('APP_NAME'))
